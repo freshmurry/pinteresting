@@ -1,0 +1,20 @@
+<div class="comment-list py-2">
+  <% if @pin.comment.present? %>
+    <div>
+      <span><strong><%= @pin.user.username %></strong></span>
+      <span>
+        <% @pin.comment.to_s.split(' ').each do |word| %>
+          <% if word.start_with?('#') %>
+            <%= link_to word, search_path(query: word) %>
+          <% else %>
+            <%= word %>
+          <% end %>
+        <% end %>
+      </span>
+    </div>
+  <% end %>
+  <!-- load comment -->
+  <div id="comment-pin-<%= @pin.id.to_s %>">
+    <%= render '_comment', pin: @pin %>
+  </div>
+</div>

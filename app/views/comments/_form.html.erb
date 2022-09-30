@@ -1,0 +1,6 @@
+<%= form_for([@pin, @pin.comments.build]) do |f| %>
+  <div class="form-group">
+    <%= f.text_area :comment, class: "form-control" %>
+  </div>
+  <%= f.submit class: "btn btn-form" %>
+<% end %>

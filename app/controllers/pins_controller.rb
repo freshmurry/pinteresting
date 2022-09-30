@@ -8,6 +8,7 @@ class PinsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
   end
 
   def new
@@ -49,9 +50,9 @@ class PinsController < ApplicationController
       @pin = current_user.pins.find_by(id: params[:id])
       redirect_to pins_path, notice: "Not authorized to edit this pin" if @pin.nil?
     end
-
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def pin_params
-      params.require(:pin).permit(:description, :image)
+      params.require(:pin).permit(:description, :image, :website, :comment)
     end
 end
